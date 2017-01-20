@@ -1,0 +1,24 @@
+.toggle-button{
+    -fx-graphic: url("../images/close.png");
+    -fx-background-color: darkgray;
+    -fx-graphic-hpos: center;
+    -fx-graphic-vpos: center;
+}
+
+.separator{
+
+}
+
+.root{
+    -fx-background-color: darkgray;
+
+}
+
+.text-field{
+    -fx-background-color: #C0C0C0;
+    -fx-focus-color: lightgray;
+}
+
+.text-area{
+    -fx-background-color: #C0C0C0;
+}

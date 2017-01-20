@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="364.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.dialog.MessageReceived">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="344.0" spacing="20.0">
+         <children>
+            <Circle fill="DODGERBLUE" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="txtContact" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Region prefHeight="25.0" prefWidth="172.0" />
+            <Text fx:id="txtNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="888 888 888" />
+            <ToggleButton fx:id="btnClose" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onMouseClicked="#onClose" prefHeight="25.0" prefWidth="25.0" />
+         </children>
+      </HBox>
+      <Separator fx:id="spTop" prefWidth="200.0" />
+      <TextFlow prefHeight="71.0" prefWidth="344.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextArea fx:id="txtMessageReceived" editable="false" prefHeight="49.0" prefWidth="344.0" wrapText="true" />
+         </children>
+      </TextFlow>
+      <Separator fx:id="spBottom" prefWidth="200.0" />
+      <TextField fx:id="fldMessageSend" onKeyPressed="#fieldKeyPressed" prefHeight="25.0" prefWidth="290.0" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
