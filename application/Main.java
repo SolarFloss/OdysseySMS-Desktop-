@@ -13,6 +13,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.List;
+
 public class Main extends Application {
     private static Stage stage;
     public static Scene scene;
@@ -83,12 +91,9 @@ public class Main extends Application {
 
 
 
-
-
-
         Controller controller = new Controller();
         controller.initialize(stage);
-        Controller.setStatus("Waiting for authentication");
+        Controller.setStatus("Waiting at " + getLocalIP());
         //Listen
         receiveAuth = new ReceiveAuth();
         receiveThread = new Thread(receiveAuth);
@@ -100,6 +105,27 @@ public class Main extends Application {
 
     private void trayIconClicked(){
 
+    }
+
+    private String getLocalIP(){
+        try {
+            List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for(NetworkInterface networkInterface : interfaces){
+                List<InetAddress> addresses = Collections.list(networkInterface.getInetAddresses());
+                for(InetAddress address : addresses){
+                    if(!address.isLoopbackAddress()){
+                        String sAddr = address.getHostAddress();
+                        boolean isIPV4 = !sAddr.contains(":");
+                        if(isIPV4){
+                            return sAddr;
+                        }
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void received(){
